@@ -1,0 +1,15 @@
+{
+  "name": "coreui-ajax",
+  "version": "1.0.0-alpha.6",
+  "dependencies": {
+    "bootstrap": "v4.0.0-beta",
+    "popper.js": "^1.12.3",
+    "jquery": "^3.0.0",
+    "fontawesome": "latest",
+    "simple-line-icons": "latest",
+    "pace": "latest",
+    "chart.js": "^2.3.0",
+    "vazir-font": "^14.0.0"
+  },
+  "private": true
+}
