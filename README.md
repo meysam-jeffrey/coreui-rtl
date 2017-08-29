@@ -1,13 +1,13 @@
 
 ### CoreUI - Free Bootstrap Admin Template RTL & LTR 
-![CoreUI RTL](http://coreui.io/assets/img/coreui.png "CoreUI Free Bootstrap Admin Template")
+![CoreUI RTL](https://raw.githubusercontent.com/meysam-jeffrey/coreui-rtl/master/img/screen.png "CoreUI Free Bootstrap Admin Template")
 
 
 ## Includes 
 
 
 * [CoreUI](http://coreui.io)
-* [Bootstrap version 4](https://github.com/mrholek/CoreUI-AngularJS)
+* [Bootstrap version 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 * [Vazir Font](https://github.com/rastikerdar/vazir-font)
 
 
