@@ -14,6 +14,11 @@
     margin-left: 0 !important;
   }
 
+  .mr-auto {
+    margin-right: initial  !important;
+    margin-left: auto !important;
+  }
+
   .dropdown-menu-right {
     left: 0 !important;
     right: auto !important;
@@ -156,27 +161,7 @@
       margin-left: - $aside-menu-width;
     }
   }
-
-  .aside-menu-fixed {
-
-    .aside-menu {
-      right: auto;
-      left: 0;
-    }
-
-    .main, .app-footer {
-      //margin-right: 0;
-      margin-left: $aside-menu-width;
-    }
-
-    &.aside-menu-hidden {
-
-      .main, .app-footer {
-        margin-left: 0;
-      }
-    }
-  }
-
+  
   .aside-menu-off-canvas {
     .aside-menu {
       position: fixed;
@@ -200,7 +185,62 @@
                     }
                 }
           }
-   }
+          .aside-menu-fixed {
+            
+                .aside-menu {
+                  right: auto;
+                  left: 0;
+                }
+            
+                .main, .app-footer {
+                  //margin-right: 0;
+                  margin-left: $aside-menu-width;
+                }
+            
+                &.aside-menu-hidden {
+            
+                  .main, .app-footer {
+                    margin-left: 0;
+                  }
+                }
+              }
+  }
+  @include media-breakpoint-down(lg) {
+
+    .sidebar-mobile-show .sidebar {
+      margin-left: -220px;
+      
+    margin-right: inherit;
+      
+    }
+    .sidebar {
+      margin-right: -220px;
+    }
+    .sidebar-mobile-show .main {
+      margin-left: -220px !important;
+      margin-right: 220px !important;
+    }
+    
+    .aside-menu-fixed {
+      
+          .aside-menu {
+            right: auto;
+            left: 0;
+          }
+      
+          .main, .app-footer {
+            //margin-right: 0;
+            margin-left: $aside-menu-width;
+          }
+      
+          &.aside-menu-hidden {
+      
+            .main, .app-footer {
+              margin-right: 0;
+            }
+          }
+        }
+  }  
   .sidebar {
     .sidebar-nav {
       direction: ltr;
