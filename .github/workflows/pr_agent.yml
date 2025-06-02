@@ -1,41 +1,20 @@
+name: PR-Agent Review
+
 on:
   pull_request:
-    types: [opened, reopened, ready_for_review, synchronize, edited]
-  pull_request_review:
-    types: [submitted, edited]
-  issue_comment:
-    types: [created, edited]
-  pull_request_review_comment:
-    types: [created, edited]
+    types: [opened, reopened, synchronize]
 
 jobs:
-  pr_agent_job:
-    if: ${{ github.event.sender.type != 'Bot' }}
+  pr-agent-review:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-      contents: write
-      discussions: write
-      statuses: write
-    name: Run pr agent on every pull request, respond to user comments
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: codium-ai/pr-agent@main
         with:
-          fetch-depth: 0
-          
-      - name: PR Agent action step
-        id: pragent
-        uses: qodo-ai/pr-agent@main
-        env:
-          PR_AGENT_TOKEN: ${{ secrets.OPENAI_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_AGENT_CONFIG_FILE: .github/pr_agent.toml
-          PR_AGENT_MODEL: "openrouter/anthropic/claude-3.7-sonnet"
-          PR_AGENT_VERBOSE: "true"
-          REVIEW_COMMENT_ENABLED: "true"
-          INLINE_COMMENT_ENABLED: "true"
-          PR_DESCRIPTION_ENABLED: "true"
-          PR_AGENT_SYSTEM_PROMPT: "You are a helpful AI assistant that reviews code changes with a focus on font implementations, CSS/SASS best practices, and general code quality. Pay special attention to @font-face declarations, font loading performance, and proper use of !important."
-          PR_AGENT_DEBUG: "true"
+          pr_agent_token: ${{ secrets.OPENAI_KEY }}
+          pr_agent_model: "openrouter/anthropic/claude-3.7-sonnet"
+          pr_agent_system_prompt: "You are a helpful AI assistant that reviews code changes with a focus on font implementations, CSS/SASS best practices, and general code quality. Pay special attention to @font-face declarations, font loading performance, and proper use of !important."
+          pr_agent_verbose: "true"
+          pr_agent_review_comment_enabled: "true"
+          pr_agent_inline_comment_enabled: "true"
+
