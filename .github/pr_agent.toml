@@ -101,8 +101,8 @@ font_related = [
 
 # Model Configuration
 [pr_agent.model]
-base_url = "https://openrouter.ai/api"  # Add this line
-name = "openai/gpt-4.1"
+base_url = "https://openrouter.ai/api/v1"  # Add this line
+name = "openrouter/anthropic/claude-3.7-sonnet"
 temperature = 0.7
 max_tokens = 2048
 top_p = 0.95
