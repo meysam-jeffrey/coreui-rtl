@@ -32,7 +32,7 @@ jobs:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_AGENT_CONFIG_FILE: .github/pr_agent.toml
-          PR_AGENT_MODEL: "openai/o1-mini-2024-09-12"
+          PR_AGENT_MODEL: "openai/gpt-4.1"
           PR_AGENT_VERBOSE: "true"
           REVIEW_COMMENT_ENABLED: "true"
           INLINE_COMMENT_ENABLED: "true"

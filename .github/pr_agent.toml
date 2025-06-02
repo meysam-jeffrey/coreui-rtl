@@ -101,7 +101,7 @@ font_related = [
 
 # Model Configuration
 [pr_agent.model]
-name = "openai/o1-mini-2024-09-12"
+name = "openai/gpt-4.1"
 temperature = 0.7
 max_tokens = 2048
 top_p = 0.95
