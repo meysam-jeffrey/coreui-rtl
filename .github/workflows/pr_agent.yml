@@ -27,11 +27,11 @@ jobs:
           
       - name: PR Agent action step
         id: pragent
-        uses: codiumai/pr-agent@main
+        uses: qodo-ai/pr-agent@main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           OPENAI_API_BASE: "https://openrouter.ai/api/v1"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_AGENT_CONFIG_FILE: .github/pr_agent.toml
           PR_AGENT_MODEL: "openrouter/anthropic/claude-3.7-sonnet"
           PR_AGENT_VERBOSE: "true"
