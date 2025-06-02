@@ -10,6 +10,13 @@ pr_description = true
 # Enable or disable review comments
 review_comment = true
 
+# Model Configuration
+[pr_agent.model]
+name = "deepseek/deepseek-r1-distill-qwen-7b"
+temperature = 0.7
+max_tokens = 2048
+top_p = 0.95
+
 # Configuration for code review
 [pr_agent.review]
 review_comment_prefix = "PR Review:"

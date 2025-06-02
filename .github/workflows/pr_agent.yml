@@ -28,3 +28,4 @@ jobs:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_AGENT_CONFIG_FILE: .github/pr_agent.toml
+          PR_AGENT_MODEL: "deepseek/deepseek-r1-distill-qwen-7b"
