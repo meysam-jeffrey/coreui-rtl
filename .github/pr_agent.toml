@@ -10,12 +10,48 @@ pr_description = true
 # Enable or disable review comments
 review_comment = true
 
-# Model Configuration
-[pr_agent.model]
-name = "deepseek/deepseek-r1-distill-qwen-7b"
-temperature = 0.7
-max_tokens = 2048
-top_p = 0.95
+# Custom Prompts Configuration
+[pr_agent.prompts]
+review_prompt = """
+Please review this code with special attention to:
+1. Font usage and implementation
+2. CSS/SASS best practices
+3. General code quality
+
+For font-related changes:
+- Verify @font-face declarations are complete and correct
+- Check font-family fallbacks
+- Ensure !important is used appropriately with fonts
+- Validate font-weight and font-style declarations
+"""
+
+inline_comment_prompt = """
+Focus on:
+- Proper font implementation
+- CSS/SASS optimization
+- Performance implications of font loading
+- Accessibility considerations
+"""
+
+# Style Review Rules
+[pr_agent.style_rules]
+font_checks = [
+    "Check @font-face declarations completeness",
+    "Verify font-family fallback chains",
+    "Validate font-weight values",
+    "Review font-display property usage",
+    "Check for unnecessary !important declarations",
+    "Ensure proper font file formats (woff2, woff)",
+    "Review font loading performance"
+]
+
+css_conventions = [
+    "BEM methodology compliance",
+    "SASS/SCSS nesting depth",
+    "Variable usage for fonts",
+    "Media query organization",
+    "Typography scale consistency"
+]
 
 # Configuration for code review
 [pr_agent.review]
@@ -24,7 +60,9 @@ enable_review_labels = true
 review_conventions = [
     "Clean Code",
     "SOLID Principles",
-    "Security Best Practices"
+    "Security Best Practices",
+    "Font Implementation Best Practices",
+    "CSS/SASS Best Practices"
 ]
 
 # Configuration for inline comments
@@ -33,6 +71,33 @@ inline_comment_prefix = "Suggestion:"
 enable_inline_comments = true
 max_inline_comments = 10
 inline_code_suggestions = true
+
+# File patterns for enhanced font checking
+[pr_agent.file_patterns]
+font_related = [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "**/fonts.{css,scss,sass,less}",
+    "**/typography.{css,scss,sass,less}"
+]
+
+# Model Configuration
+[pr_agent.model]
+name = "deepseek/deepseek-r1-distill-qwen-7b"
+temperature = 0.7
+max_tokens = 2048
+top_p = 0.95
+
+# Language specific settings
+[pr_agent.languages]
+typescript = true
+javascript = true
+python = true
+markdown = true
+css = true
+scss = true
 
 # Configuration for PR description
 [pr_agent.description]
@@ -43,19 +108,25 @@ description_template = """
 ## 🛠 Technical Details
 {technical_details}
 
+### Font Implementation Details
+- Font families used
+- Font loading strategy
+- Performance considerations
+- Browser compatibility
+
 ## 📝 Testing Notes
 {testing_notes}
+
+### Font Testing Checklist
+- [ ] Tested across major browsers
+- [ ] Verified font loading performance
+- [ ] Checked fallback fonts
+- [ ] Validated font weights
+- [ ] Reviewed font accessibility
 
 ## 🔄 Related Issues
 {related_issues}
 """
-
-# Language specific settings
-[pr_agent.languages]
-typescript = true
-javascript = true
-python = true
-markdown = true
 
 # Security settings
 [pr_agent.security]
