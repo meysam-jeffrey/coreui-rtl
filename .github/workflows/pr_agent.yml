@@ -1,7 +1,13 @@
 on:
   pull_request:
-    types: [opened, reopened, ready_for_review]
+    types: [opened, reopened, ready_for_review, synchronize, edited]
+  pull_request_review:
+    types: [submitted, edited]
   issue_comment:
+    types: [created, edited]
+  pull_request_review_comment:
+    types: [created, edited]
+
 jobs:
   pr_agent_job:
     if: ${{ github.event.sender.type != 'Bot' }}
@@ -12,9 +18,13 @@ jobs:
       contents: write
     name: Run pr agent on every pull request, respond to user comments
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
       - name: PR Agent action step
         id: pragent
         uses: qodo-ai/pr-agent@main
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_AGENT_CONFIG_FILE: .github/pr_agent.toml

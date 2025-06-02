@@ -1,0 +1,56 @@
+# PR Agent Configuration File
+
+[pr_agent]
+# Enable or disable inline code suggestions
+inline_code_suggestions = true
+
+# Enable or disable PR description generation
+pr_description = true
+
+# Enable or disable review comments
+review_comment = true
+
+# Configuration for code review
+[pr_agent.review]
+review_comment_prefix = "PR Review:"
+enable_review_labels = true
+review_conventions = [
+    "Clean Code",
+    "SOLID Principles",
+    "Security Best Practices"
+]
+
+# Configuration for inline comments
+[pr_agent.inline]
+inline_comment_prefix = "Suggestion:"
+enable_inline_comments = true
+max_inline_comments = 10
+inline_code_suggestions = true
+
+# Configuration for PR description
+[pr_agent.description]
+description_template = """
+## 🔍 Changes Overview
+{changes_overview}
+
+## 🛠 Technical Details
+{technical_details}
+
+## 📝 Testing Notes
+{testing_notes}
+
+## 🔄 Related Issues
+{related_issues}
+"""
+
+# Language specific settings
+[pr_agent.languages]
+typescript = true
+javascript = true
+python = true
+markdown = true
+
+# Security settings
+[pr_agent.security]
+detect_secrets = true
+check_dependencies = true 
