@@ -10,6 +10,22 @@ pr_description = true
 # Enable or disable review comments
 review_comment = true
 
+# Enable or disable inline suggestions
+enable_inline_suggestions = true
+
+# Enable or disable review comments
+enable_review_comments = true
+
+# Comment threshold
+comment_threshold = 1
+
+# Review Behavior
+[pr_agent.behavior]
+review_mode = "verbose"
+comment_style = "detailed"
+suggest_improvements = true
+review_every_commit = true
+
 # Custom Prompts Configuration
 [pr_agent.prompts]
 review_prompt = """

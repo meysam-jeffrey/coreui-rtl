@@ -16,11 +16,15 @@ jobs:
       issues: write
       pull-requests: write
       contents: write
+      discussions: write
+      statuses: write
     name: Run pr agent on every pull request, respond to user comments
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
+        with:
+          fetch-depth: 0
+          
       - name: PR Agent action step
         id: pragent
         uses: qodo-ai/pr-agent@main
@@ -29,3 +33,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_AGENT_CONFIG_FILE: .github/pr_agent.toml
           PR_AGENT_MODEL: "deepseek/deepseek-r1-distill-qwen-7b"
+          PR_AGENT_VERBOSE: "true"
+          REVIEW_COMMENT_ENABLED: "true"
+          INLINE_COMMENT_ENABLED: "true"
+          PR_DESCRIPTION_ENABLED: "true"
+          PR_AGENT_SYSTEM_PROMPT: "You are a helpful AI assistant that reviews code changes with a focus on font implementations, CSS/SASS best practices, and general code quality. Pay special attention to @font-face declarations, font loading performance, and proper use of !important."
+          PR_AGENT_DEBUG: "true"
